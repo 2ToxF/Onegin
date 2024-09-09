@@ -11,18 +11,19 @@ void swap(char** x, char** y);
 
 int main()
 {
-    const char* const FILE_NAME = "text.txt";
-    const int MAX_STRINGS_NUM = 4000;
+    const char* const FILE_ONEGIN_NAME = "onegin.txt";
+    const char* const FILE_RESULT_NAME = "result.txt";
+    const int MAX_STRINGS_NUM = 5350;
 
-    FILE* fptr = fopen(FILE_NAME, "r");
+    FILE* onegin_fptr = fopen(FILE_ONEGIN_NAME, "r");
     char strings[MAX_STRINGS_NUM][MAX_STRINGS_LEN] = {};
     char* strptrs_direct_sw[MAX_STRINGS_NUM] = {};
     char* strptrs_reverse_sw[MAX_STRINGS_NUM] = {};
 
     int real_strings_number = 0;
-    for (int i = 0; feof(fptr) == 0; i++)
+    for (int i = 0; feof(onegin_fptr) == 0; i++)
     {
-        fgets(strings[i], MAX_STRINGS_LEN, fptr);
+        fgets(strings[i], MAX_STRINGS_LEN, onegin_fptr);
         strptrs_direct_sw[i] = strings[i];
         strptrs_reverse_sw[i] = strings[i];
         real_strings_number++;
@@ -33,15 +34,21 @@ int main()
     quick_sort(strptrs_direct_sw, START_OF_MAS, END_OF_MAS, compare_direct);
     quick_sort(strptrs_reverse_sw, START_OF_MAS, END_OF_MAS, compare_reverse);
 
-    for (int i = 0; i < real_strings_number; i++)
-        printf("%s", strptrs_direct_sw[i]);
-    printf("\n");
+    FILE* result_fptr = fopen(FILE_RESULT_NAME, "w");
 
     for (int i = 0; i < real_strings_number; i++)
-        printf("%s", strptrs_reverse_sw[i]);
-    printf("\n");
+        fprintf(result_fptr, "%s", strptrs_direct_sw[i]);
+    fprintf(result_fptr, "\n\n-----------------------------------------------------------------------\n\n\n");
 
-    fclose(fptr); fptr = NULL;
+    for (int i = 0; i < real_strings_number; i++)
+        fprintf(result_fptr, "%s", strptrs_reverse_sw[i]);
+    fprintf(result_fptr, "\n\n-----------------------------------------------------------------------\n\n\n");
+
+    for (int i = 0; i < real_strings_number; i++)
+        fprintf(result_fptr, "%s", strings[i]);
+
+    fclose(onegin_fptr); onegin_fptr = NULL;
+    fclose(result_fptr); result_fptr = NULL;
     return 0;
 }
 
@@ -62,8 +69,8 @@ int compare_direct(char* s1, char* s2)
             continue;
         }
 
-        if (s1[s1ind] != s2[s2ind])
-            return s1[s1ind] - s2[s2ind];
+        if (toupper(s1[s1ind]) != toupper(s2[s2ind]))
+            return toupper(s1[s1ind]) - toupper(s2[s2ind]);
         s1ind++; s2ind++;
     }
 
@@ -89,8 +96,8 @@ int compare_reverse(char* s1, char* s2)
             continue;
         }
 
-        if (s1[s1ind] != s2[s2ind])
-            return s1[s1ind] - s2[s2ind];
+        if (toupper(s1[s1ind]) != toupper(s2[s2ind]))
+            return toupper(s1[s1ind]) - toupper(s2[s2ind]);
         s1ind--; s2ind--;
     }
 
