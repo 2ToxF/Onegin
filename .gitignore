@@ -1,8 +1,9 @@
-object/
-
-result.txt
+# .txt
 test.txt
+result.txt
 
-testqs.cpp
-
+# .exe
 *.exe
+
+# folders
+object/

@@ -5,7 +5,7 @@
 #include <sys\stat.h>
 #include <unistd.h>
 
-#define FREE(buffer) free(buffer);
+#define FREE(buffer) free(buffer); buffer = NULL;
 #define FCLOSE(fptr) fclose(fptr); fptr = NULL;
 
 struct StringStat
@@ -104,6 +104,11 @@ int main()
 
     for (int i = 0; i < strings_number; i++)
         fprintf(result_fptr, "%s", not_sorted_strings[i].adress);
+
+    FCLOSE(result_fptr)
+    FREE(dir_sorted_strings)
+    FREE(rev_sorted_strings)
+    FREE(not_sorted_strings)
 
     return 0;
 }
