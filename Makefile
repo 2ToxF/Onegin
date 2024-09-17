@@ -29,7 +29,7 @@ $(OBJECTS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INCLUDES)
 	@$(CC) -c $(DED_FLAGS) -I$(INC_DIR) $< -o $@
 
 run: $(EXE)
-	$(EXE)
+	@$(EXE)
 
 docs:
 	doxygen $(DOCS_NAME)
