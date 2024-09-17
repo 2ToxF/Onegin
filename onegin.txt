@@ -1357,7 +1357,7 @@ That bilberry wine, I'm sore afraid,
 The deuce with my inside has played."
 "Say, of the two which was Tattiana?"
 "She who with melancholy face
-And silent as the maid Svetlana(30)
+And silent as the maid Svetlana
 Hard by the window took her place."--
 "The younger, you're in love with her!"
 "Well!"--"I the elder should prefer,
@@ -1553,12 +1553,12 @@ The days which to your youth belong?
 Were you in love when you were young?"--
 "Alack! Tattiana," she replied,
 "We never loved in days of old,
-My mother-in-law who lately died(34)
+My mother-in-law who lately died
 Had killed me had the like been told."
 "How came you then to wed a man?"--
 "Why, as God ordered! My Ivan
 Was younger than myself, my light,
-For I myself was thirteen quite?(35)
+For I myself was thirteen quite?
 The matchmaker a fortnight sped,
 Her suit before my parents pressing:
 At last my father gave his blessing,
@@ -1708,7 +1708,7 @@ In correspondence been allowed.
 They wish that ladies should, I hear,
 Learn Russian, but the Lord defend!
 I can't conceive a little dear
-With the "Well-Wisher" in her hand!(40)
+With the "Well-Wisher" in her hand!
 I ask, all ye who poets are,
 Is it not true? the objects fair,
 To whom ye for unnumbered crimes
@@ -3484,7 +3484,7 @@ For consecrate to me he fell
 In the dawn of existence drear.
 Maid whom my heart desires alone,
 Approach, approach? I am thine own."
-Thus in a style obscure and stale,(64)
+Thus in a style obscure and stale,
 He wrote ('tis the romantic style,
 Though of romance therein I fail
 To see aught--never mind meanwhile)
@@ -4151,7 +4151,7 @@ How the young imp on Tania doted!
 To captivate her how devoted!
 I mused: perhaps the matter's squared--
 O yes! my hopes soon disappeared."
-"But, matushka, to Moscow you(70)
+"But, matushka, to Moscow you
 Should go, the market for a maid,
 With many a vacancy, 'tis said."--
 "Alas! my friend, no revenue!"
