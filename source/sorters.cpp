@@ -4,6 +4,11 @@
 #include "sorters.h"
 #include "utils.h"
 
+static int partition  (void* arr, size_t elem_size, int low, int high,
+                       int (*compare_func)(void*, void*, size_t));
+static void quick_sort(void* arr, size_t elem_size, int low, int high,
+                       int (*compare_func)(void*, void*, size_t));
+
 
 int partition(void* arr, size_t elem_size, int low, int high,
               int (*compare_func)(void*, void*, size_t))
