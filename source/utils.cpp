@@ -32,8 +32,8 @@ void read_strings(struct DiffSortedText* text, char* input_buffer, int input_buf
     {
         new_str_ptr = strchr(last_str_ptr, NULL_TARGET) + 1;
 
-        text->no_sort[read_strings_number] = text->dir_sort[read_strings_number] = \
-            text->rev_sort[read_strings_number] = {last_str_ptr, (int) (new_str_ptr - last_str_ptr)};
+        text->rev_sort[read_strings_number] = {last_str_ptr, (int) (new_str_ptr - last_str_ptr)};
+        text->no_sort[read_strings_number] = text->dir_sort[read_strings_number] = last_str_ptr;
 
         last_str_ptr = new_str_ptr;
         read_strings_number++;

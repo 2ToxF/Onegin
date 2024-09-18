@@ -13,9 +13,9 @@ struct StringStat
 };
 struct DiffSortedText
 {
-    struct StringStat* dir_sort;
-    struct StringStat* rev_sort;
-    struct StringStat* no_sort;
+    char**              dir_sort;
+    struct StringStat*  rev_sort;
+    char**              no_sort;
 };
 
 int get_strings_number(char* input_buffer);
