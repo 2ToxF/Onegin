@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "io.h"
+#include "input_output.h"
 #include "sorters.h"
 #include "utils.h"
 

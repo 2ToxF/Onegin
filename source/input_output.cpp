@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <sys\stat.h>
 
-#include "io.h"
+#include "input_output.h"
 
 #define RED_CMD_COLOR "\033[0;31m"
 #define GRN_CMD_COLOR "\033[0;32m"
@@ -60,7 +60,10 @@ CodeError fprint_result(const struct DiffSortedText* text, int strings_number)
 
 void print_code_error(CodeError code_err)
 {
-    #define ERR_DESCR_(error) case error##_ERROR: printf(RED_CMD_COLOR "ERROR: " #error "_ERROR" WHT_CMD_COLOR "\n"); break;
+    #define ERR_DESCR_(error, code) case error##_ERROR:                                                     \
+                                        printf(RED_CMD_COLOR "ERROR: " #error "_ERROR" WHT_CMD_COLOR "\n"); \
+                                        code;                                                               \
+                                        break;                                                              \
 
     switch (code_err)
     {
@@ -68,9 +71,10 @@ void print_code_error(CodeError code_err)
             printf(GRN_CMD_COLOR "Code was completed without errors" WHT_CMD_COLOR "\n");
             break;
 
-        ERR_DESCR_(FILLING_STAT)
-        ERR_DESCR_(FILE_NOT_OPENED)
-        ERR_DESCR_(WRONG_BUF_SIZE)
+        ERR_DESCR_(UNKNOWN_OPTION, )
+        ERR_DESCR_(FILLING_STAT, )
+        ERR_DESCR_(FILE_NOT_OPENED, )
+        ERR_DESCR_(WRONG_BUF_SIZE, )
 
         default:
             printf(RED_CMD_COLOR "UNKNOWN ERROR" WHT_CMD_COLOR "\n");
@@ -79,3 +83,9 @@ void print_code_error(CodeError code_err)
 
     #undef ERR_DESCR_
 }
+
+//
+// void print_help()
+// {
+//     printf();
+// }

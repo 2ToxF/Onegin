@@ -6,6 +6,7 @@
 enum CodeError
 {
     NO_ERROR,
+    UNKNOWN_OPTION_ERROR,
     FILLING_STAT_ERROR,
     FILE_NOT_OPENED_ERROR,
     WRONG_BUF_SIZE_ERROR,
@@ -14,5 +15,6 @@ enum CodeError
 CodeError fopen_and_read(char** input_buffer, int* input_buffer_length);
 CodeError fprint_result(const struct DiffSortedText* text, int strings_number);
 void print_code_error(CodeError code_err);
+void print_help();
 
 #endif
