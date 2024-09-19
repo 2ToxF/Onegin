@@ -1,9 +1,22 @@
 #include <string.h>
+#include <sys\stat.h>
 
+#include "input_output.h"
 #include "utils.h"
 
 static const int CR_TARGET   = '\r';
 static const int NULL_TARGET = '\0';
+
+
+CodeError fsize(const char* file_name, int* input_buffer_length)
+{
+    struct stat input_file_stat = {};
+    if (stat(file_name, &input_file_stat) != 0)
+        return FILLING_STAT_ERROR;
+
+    *input_buffer_length = input_file_stat.st_size + 1;
+    return NO_ERROR;
+}
 
 
 int get_strings_number(char* input_buffer)

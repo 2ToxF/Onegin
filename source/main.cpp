@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "io.h"
+#include "input_output.h"
 #include "sorters.h"
 #include "utils.h"
 
@@ -21,7 +21,7 @@ CodeError run_program()
 
     char* input_buffer = NULL;
     int input_buffer_length = 0;
-    if ((code_err = fopen_and_read(&input_buffer, &input_buffer_length)) != NO_ERROR)
+    if ((code_err = my_fread(&input_buffer, &input_buffer_length)) != NO_ERROR)
         return code_err;
 
     int strings_number = get_strings_number(input_buffer);

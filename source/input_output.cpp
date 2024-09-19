@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys\stat.h>
 
-#include "io.h"
+#include "input_output.h"
 
 #define RED_CMD_COLOR "\033[0;31m"
 #define GRN_CMD_COLOR "\033[0;32m"
@@ -13,25 +12,25 @@ static const char* const FILE_RESULT_NAME = "result.txt";
 static const int NUM_OF_ACTIONS_PER_CHAR = 1;
 
 
-CodeError fopen_and_read(char** input_buffer, int* input_buffer_length)
+CodeError my_fread(char** input_buffer, int* input_buffer_length)
 {
+    CodeError code_err = NO_ERROR;
+
     FILE* input_fptr = fopen(FILE_INPUT_NAME, "rb");
     if (input_fptr == NULL)
         return FILE_NOT_OPENED_ERROR;
 
-    struct stat input_file_stat = {};
-    if (stat(FILE_INPUT_NAME, &input_file_stat) != 0)
-        return FILLING_STAT_ERROR;
-    *input_buffer_length = input_file_stat.st_size + 1;
+    if ((code_err = fsize(FILE_INPUT_NAME, input_buffer_length)) != NO_ERROR)
+        return code_err;
 
     *input_buffer = (char*) calloc(*input_buffer_length, sizeof(char));
     long long unsigned int success_read_string_length = fread(*input_buffer, NUM_OF_ACTIONS_PER_CHAR,
-                                                               input_file_stat.st_size, input_fptr);
-    if (success_read_string_length != (long long unsigned int) input_file_stat.st_size)
+                                                              *input_buffer_length - 1, input_fptr);
+    if (success_read_string_length != (long long unsigned int) (*input_buffer_length - 1))
         return WRONG_BUF_SIZE_ERROR;
 
     FCLOSE(input_fptr)
-    return NO_ERROR;
+    return code_err;
 }
 
 

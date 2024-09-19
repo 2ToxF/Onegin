@@ -5,59 +5,63 @@
 #include "utils.h"
 
 
-int compare_direct(void* void_str1, void* void_str2, size_t)
+int compare_direct(void* void_str1, void* void_str2)
 {
     assert(void_str1 != NULL);
     assert(void_str2 != NULL);
 
     char* str1 = *((char**) void_str1);
     char* str2 = *((char**) void_str2);
-    int s1ind = 0, s2ind = 0;
+    int idx1 = 0, idx2 = 0;
 
-    while (str1[s1ind] != '\0' && str2[s2ind] != '\0')
+    while (str1[idx1] != '\0' && str2[idx2] != '\0')
     {
-        while (isalpha(str1[s1ind]) == 0 && str1[s1ind] != '\0')
-            s1ind++;
-        while (isalpha(str2[s2ind]) == 0 && str2[s2ind] != '\0')
-            s2ind++;
+        while (isalpha(str1[idx1]) == 0 && str1[idx1] != '\0')
+            idx1++;
+        while (isalpha(str2[idx2]) == 0 && str2[idx2] != '\0')
+            idx2++;
 
-        if (str1[s1ind] == '\0' || str2[s2ind] == '\0')
+        if (str1[idx1] == '\0' || str2[idx2] == '\0')
             break;
 
-        if (toupper(str1[s1ind]) != toupper(str2[s2ind]))
-            return toupper(str1[s1ind]) - toupper(str2[s2ind]);
+        if (toupper(str1[idx1]) != toupper(str2[idx2]))
+            return toupper(str1[idx1]) - toupper(str2[idx2]);
 
-        s1ind++; s2ind++;
+        idx1++; idx2++;
     }
 
-    return s2ind - s1ind;
+    return idx2 - idx1;
 }
 
 
-int compare_reverse(void* void_strstat1, void* void_strstat2, size_t)
+int compare_reverse(void* void_strstat1, void* void_strstat2)
 {
     assert(void_strstat1 != NULL);
     assert(void_strstat2 != NULL);
 
     struct StringStat strstat1 = *((StringStat*) void_strstat1);
     struct StringStat strstat2 = *((StringStat*) void_strstat2);
-    int s1ind = strstat1.len - 1, s2ind = strstat2.len - 1;
+    int idx1 = strstat1.len - 1, idx2 = strstat2.len - 1;
 
-    while (s1ind >= 0 && s2ind >= 0)
+    while (idx1 >= 0 && idx2 >= 0)
     {
-        while (s1ind >= 0 && isalpha(strstat1.adress[s1ind]) == 0)
-            s1ind--;
-        while (s2ind >= 0 && isalpha(strstat2.adress[s2ind]) == 0)
-            s2ind--;
+        while (idx1 >= 0 && isalpha(strstat1.adress[idx1]) == 0)
+            idx1--;
+        while (idx2 >= 0 && isalpha(strstat2.adress[idx2]) == 0)
+            idx2--;
 
-        if (s1ind < 0 || s2ind < 0)
+        if (idx1 < 0 || idx2 < 0)
             break;
 
-        if (toupper(strstat1.adress[s1ind]) != toupper(strstat2.adress[s2ind]))
-            return toupper(strstat1.adress[s1ind]) - toupper(strstat2.adress[s2ind]);
+        if (toupper(strstat1.adress[idx1]) !=
+            toupper(strstat2.adress[idx2]))
+            {
+            return toupper(strstat1.adress[idx1]) -
+                   toupper(strstat2.adress[idx2]);
+            }
 
-        s1ind--; s2ind--;
+        idx1--; idx2--;
     }
 
-    return s1ind - s2ind;
+    return idx1 - idx2;
 }
