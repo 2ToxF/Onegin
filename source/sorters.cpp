@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <string.h>
 
 #include "comparators.h"
 #include "sorters.h"
@@ -55,9 +56,24 @@ void quick_sort(void* arr, size_t elem_size, int low_border, int high_border,
 }
 
 
-void sort_onegin(struct DiffSortedText* text, int strings_number)
+CodeError sort_onegin(struct DiffSortedText* text, int strings_number, char* sort_type)
 {
     const int START_OF_MAS = 0, END_OF_MAS = strings_number - 1;
-    quick_sort(text->dir_sort, sizeof(text->dir_sort[0]), START_OF_MAS, END_OF_MAS, compare_direct);
-    quick_sort(text->rev_sort, sizeof(text->rev_sort[0]), START_OF_MAS, END_OF_MAS, compare_reverse);
+
+    if (strcmp(sort_type, SORT_ALL_CMD) == 0)
+    {
+        quick_sort(text->dir_sort, sizeof(text->dir_sort[0]), START_OF_MAS, END_OF_MAS, compare_direct);
+        quick_sort(text->rev_sort, sizeof(text->rev_sort[0]), START_OF_MAS, END_OF_MAS, compare_reverse);
+    }
+
+    else if (strcmp(sort_type, SORT_DIR_CMD) == 0)
+        quick_sort(text->dir_sort, sizeof(text->dir_sort[0]), START_OF_MAS, END_OF_MAS, compare_direct);
+
+    else if (strcmp(sort_type, SORT_REV_CMD) == 0)
+        quick_sort(text->rev_sort, sizeof(text->rev_sort[0]), START_OF_MAS, END_OF_MAS, compare_reverse);
+
+    else
+        return UNKNOWN_OPTION_ERROR;
+
+    return NO_ERROR;
 }
